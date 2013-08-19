@@ -57,7 +57,6 @@ BinarySearchTree.prototype = {
    * @param {variant} value The data to add to the list.
    * @param {variant} id The id to add to the list
    * @param {Function} callback Callback that is called
-   * @return {Void}
    * @method add
    */
   add: function(value, id, callback) {
@@ -122,10 +121,10 @@ BinarySearchTree.prototype = {
   /**
    * Determines if the given value is present in the tree.
    * @param {variant} value The value to find.
-   * @return {Boolean} True if the value is found, false if not.
+   * @param {Function} callback The callback to be fired with a {Boolean} of whether or not found
    * @method contains
    */
-  contains: function(value) {
+  contains: function(value, callback) {
 
     var found = false,
       current = this._root;
@@ -147,18 +146,18 @@ BinarySearchTree.prototype = {
       }
     }
 
-    //only proceed if the node was found
-    return found;
-
+    if (callback) {
+      callback(null, found);
+    }
   },
 
   /**
    * Finds all ids for a value, using equality
    * @param {variant} value The value to find.
-   * @return {Object} Object with ids or empty object if none.
+   * @param {Function} callback Calls back with ids or empty object if none
    * @method contains
    */
-  equals: function(value) {
+  equals: function(value, callback) {
 
     var found = false,
       current = this._root;
@@ -180,10 +179,12 @@ BinarySearchTree.prototype = {
       }
     }
 
-    if (found) {
-      return current.ids;
-    } else {
-      return { };
+    if (callback) {
+      if (found) {
+        callback(null, current.ids);
+      } else {
+        callback(null, { });
+      }
     }
   },
   /**
@@ -192,7 +193,7 @@ BinarySearchTree.prototype = {
    * properly balanced.
    * @param {variant} value The value to remove.
    * @param {variant} id The id to remove
-   * @return {void}
+   * @param {Function} callback The callback to call when remove is completed
    * @method remove
    */
   remove: function(value, id) {
@@ -230,6 +231,9 @@ BinarySearchTree.prototype = {
 
       // if there are still ids, break out, we're done
       if (Object.keys(current.ids).length) {
+        if (callback) {
+          callback(null);
+        }
         return;
       }
 
@@ -348,6 +352,9 @@ BinarySearchTree.prototype = {
 
     }
 
+    if (callback) {
+      callback(null);
+    }
   },
 
   /**
