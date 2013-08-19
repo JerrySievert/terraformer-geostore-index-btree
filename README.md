@@ -9,9 +9,17 @@ tree.add("Crimes", 1, function (err, data) {
   console.log(data);
 });
 
-tree.equals("Crime", function (err, data) {
+tree.add("Liquor", 2, function (err, data) {
   console.log(data);
-  // { "1": true };
+});
+
+tree.add("Crimes", 3, function (err, data) {
+  console.log(data);
+});
+
+tree.equals("Crimes", function (err, data) {
+  console.log(data);
+  // { "1": true, "3": true };
 });
 ```
 
