@@ -1,7 +1,7 @@
 # B-Tree Index
 
 ``` js
-var btree = require('terraformer-btree-index-btree').BinarySearchTree;
+var btree = require('terraformer-geostore-index-btree').BinarySearchTree;
 
 var tree = new btree();
 
