@@ -196,7 +196,7 @@ BinarySearchTree.prototype = {
    * @param {Function} callback The callback to call when remove is completed
    * @method remove
    */
-  remove: function(value, id) {
+  remove: function(value, id, callback) {
 
     var found = false,
       parent = null,
