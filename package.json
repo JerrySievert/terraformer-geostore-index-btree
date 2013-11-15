@@ -1,6 +1,6 @@
 {
   "name": "terraformer-geostore-index-btree",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "B-Tree index for Terraformer",
   "main": "btree.js",
   "scripts": {

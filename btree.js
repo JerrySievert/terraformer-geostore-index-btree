@@ -147,7 +147,7 @@ BinarySearchTree.prototype = {
     }
 
     if (callback) {
-      callback(null, found);
+      callback(null, current.ids[value] ? true : false);
     }
   },
 
